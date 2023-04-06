@@ -1,0 +1,1790 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A software for computer vision that anyone could use.">
+      
+      
+        <meta name="author" content="Ibrahim Aljalal">
+      
+      
+        <link rel="canonical" href="https://ibrahimaljalal.github.io/BV/documentation/object_detection/">
+      
+      
+        <link rel="prev" href="../pipe_angle/">
+      
+      
+        <link rel="next" href="../../troubleshooting/">
+      
+      <link rel="icon" href="../../resources/media/bv.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
+    
+    
+      
+        <title>Object Detection - Brilliant Vision</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7a7fce14.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Brilliant Vision" class="md-header__button md-logo" aria-label="Brilliant Vision" data-md-component="logo">
+      
+  <img src="../../resources/media/bv.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Brilliant Vision
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Object Detection
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../about/" class="md-tabs__link">
+      About
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../downloads/" class="md-tabs__link">
+      Downloads
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../user_guides/" class="md-tabs__link">
+      User Guides
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/" class="md-tabs__link">
+        Examples
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../results/" class="md-tabs__link">
+        Results
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Documentation
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../troubleshooting/" class="md-tabs__link">
+      Troubleshooting
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../best_practices/" class="md-tabs__link">
+      Best Practices
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../FAQs/" class="md-tabs__link">
+      FAQs
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../feedback/" class="md-tabs__link">
+      Feedback
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../others/" class="md-tabs__link">
+      Others
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Brilliant Vision" class="md-nav__button md-logo" aria-label="Brilliant Vision" data-md-component="logo">
+      
+  <img src="../../resources/media/bv.png" alt="logo">
+
+    </a>
+    Brilliant Vision
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../downloads/" class="md-nav__link">
+        Downloads
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_guides/" class="md-nav__link">
+        User Guides
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        Examples Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/color_detection/" class="md-nav__link">
+        Color Detection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/pipe_angle/" class="md-nav__link">
+        Pipe Angle Detection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/object_detection/" class="md-nav__link">
+        Object Detection
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Results
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Results
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../results/" class="md-nav__link">
+        Results Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../results/color_detection/" class="md-nav__link">
+        Color Detection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../results/pipe_angle/" class="md-nav__link">
+        Pipe Angle Detection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../results/object_detection/" class="md-nav__link">
+        Object Detection
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Documentation Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../color_detection/" class="md-nav__link">
+        Color Detection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pipe_angle/" class="md-nav__link">
+        Pipe Angle Detection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Object Detection
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Object Detection
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../best_practices/" class="md-nav__link">
+        Best Practices
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQs/" class="md-nav__link">
+        FAQs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        Feedback
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/" class="md-nav__link">
+        Others
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Object Detection</h1>
+
+<hr />
+<details class="info">
+<summary>.json file</summary>
+<details class="info">
+<summary>input_type</summary>
+<h6 id="_1"></h6>
+<p>type: int or string (only in the *.json file in the settings folder)<br />
+possible values (depends on input variable): 1 (or video), 2 (or image), 3 (or camera), 4 (or ip).<br />
+default value: camera  </p>
+<p>Explanation:<br />
+Determine what kind of input the program will use. There are four possible integer values for this variable. They are:<br />
+1 (video), 2 (image), 3 (camera), and 4 (ip). more details are in the input variable documentation.  </p>
+<p>Notes:<br />
+For your convenience it is possible to use string type as an input but only in the *.json file in the settings folder. for example instead of writing 3 you could write camera or Camera in the default.json file. the load_settings function in your main.py file will take care of converting the input_type variable to an integer.  </p>
+<p>Also note that the input variable depends on the input_type variable. So if you change the input_type variable you should make sure that the input variable will have a correct value. for example if the input_type variable is a camera (or number 3), then the input variable should only be an integer which represent which camera in your device such as 1. Another example if the input_type is video (or number 1) then the input should be a file path such as C:/filename.mp4</p>
+<h6 id="_2"></h6>
+</details>
+<details class="info">
+<summary>input</summary>
+<h6 id="_3"></h6>
+<p>type: int, string<br />
+possible values (depends on input_type variable): <br />
+input_type is 1 or 2 (video or image): possible values are file paths (Example: C:/filename.mp4 or C:/filename.png).<br />
+input_type is 3 (camera): possible values are integers from 0 or more (Example: 2).<br />
+input_type is 4 (ip): possible values are Live stream URLs (Example: https://192.168.100.25:8080/video).  </p>
+<p>default value: 0 (for camera)  </p>
+<p>Explanation:<br />
+This variable depends on the input_type variable.<br />
+Here is a brief description of the variable:  </p>
+<p>input_type is video or image:<br />
+The input will be a path of the image or video you want to use in you program. usually we use the video or image for testing purposes.  </p>
+<p>input_type is camera:<br />
+The input variable will be an integer that will describe what camera you are using (note that the count starts from 0 not 1). So if you have three cameras on your device and write 2 in the *.json file, then you will use the third camera. if you write 3 then you will get an error.</p>
+<p>input_type IP:<br />
+The live stream ip address (URL) you want to use in your program. you could stream from your phone if you use the IP Webcam App for Android devices. If you install the app, open it and scroll to the bottom and select "Start server". Your live IP server in the local area network will be after "IPv4:" (you could choose the first or second). the URL that you need to past is what is after "IPv4:" plus "/video" (Example: http://192.168.100.25:8080/video) make sure you are at the same local area network. you can test if the stream is available by simply writing the URL in your web browser such as Chrome or Firefox.</p>
+<p>Notes:<br />
+If you are using Windows and the input is for an image or video use "/" instead of "\" for the path of the video or image or add additional "\" to "\". For example C:\Users\Ibrahim\filename.mp4 should instead be C:/Users/Ibrahim/filename.mp4 or C:\Users\Ibrahim\filename.mp4</p>
+<p>Do not forget to add the extension. Example: filename.mp4 not filename  </p>
+<h6 id="_4"></h6>
+</details>
+<details class="info">
+<summary>AI_model</summary>
+<p>type: int, string (only in the *.json file in the settings folder)<br />
+possible values: 1 (or SSD), 2 (YOLO_v3_accurate), or 3 (YOLO_v3_not_accurate)<br />
+default value: 1 (SSD)  </p>
+<p>Explanation:<br />
+there are so far three AI models in this software. they are:  </p>
+<p>SSD: usually this is the best choice since it is relatively fast and is the fastest out of the three models and is generally more accurate than YOLO_v3_not_accurate model (or 3)</p>
+<p>YOLO_v3_accurate: This is based on the You Look Only Once AI model. this is the most accurate model of the three but its main disadvantage is that it is very slow. if you have a normal PC it could in some worst cases get as slow as 0.1 frames per seconds.  </p>
+<p>YOLO_v3_not_accurate: This is also based on the You Look Only Once AI model with some modifications to make it relatively faster but with the cost of losing accuracy. we do not recommend using this model because it is slower than ssd and in most cases ssd outperforms it, only use it if the object you want to detect is not available in ssd or if you noticed it is better than ssd in a certain circumstance.</p>
+<p>Notes:<br />
+You do not need a GPU in any of these models</p>
+</details>
+<details class="info">
+<summary>show_frames</summary>
+<p>type: boolean<br />
+possible values: true or false<br />
+default value: true  </p>
+<p>Explanation:<br />
+if false the display window will not show. this will be useful if you want to use less processing power.</p>
+<p>Notes:<br />
+if you want to use the code for a certain project with the Raspberry pi 4 (or any lny linux machine) and would like the code to immediately run once you power the processor, then follow the steps in the readMe.md file which will be generated if you click on the "Generate Code" in the "Control Window" and make sure to make this variable false.</p>
+</details>
+<details class="info">
+<summary>resize</summary>
+<p>type: boolean<br />
+possible values: true or false<br />
+default value: true  </p>
+<p>Explanation:<br />
+This variable simply will allow you to scale your frame. if it is false, then the scale variable will not have any effect</p>
+</details>
+<details class="info">
+<summary>scale</summary>
+<p>type: float<br />
+possible values (depends on resize variable): more than 0 and preferred to be less than 1<br />
+default value: 1  </p>
+<p>Explanation:<br />
+This variable is the percentage scale of your original frame. if you have a frame of 1000 pixels width and 1000 pixels height and you make scale variable to 0.5 then you will have 500 pixels for height and width. this variable  will be useful if you have a frame with very high resolution and you want to make your program run faster.</p>
+<p>Notes:<br />
+This variable depends on the resize variable. if it is false then its value will have no effect.<br />
+It will not make sense if you make this variable more than 1 since it will not increase the resolution but simply will make your program much slower since you have increased the number of pixels.  </p>
+</details>
+<details class="info">
+<summary>delay_time</summary>
+<p>type: int<br />
+possible values: 1 and more (preferred 1)<br />
+default value: 1  </p>
+<p>Explanation:<br />
+time in milliseconds it waits after each frame.  </p>
+</details>
+<details class="info">
+<summary>ASCII_close_window_key</summary>
+<p>type: int<br />
+possible values: 0 to 127 (preferred 27)<br />
+default value: 27  </p>
+<p>Explanation:<br />
+the key on your keyboard that will close the program. every key on your keyboard has an ASCII value. the ASCII for the Esc key is 27</p>
+</details>
+<details class="info">
+<summary>confidence</summary>
+<h6 id="_5"></h6>
+<p>type: float<br />
+possible values: 0 to 1 (0% - 100%)  </p>
+<p>Explanation:<br />
+the minimum confidence or accuracy accepted for detection. for example if there is a person in a frame and the program is 0.6 (60%) sure of it and the confidence variable is 0.8 (80%) than this person will not be recorded in your results however if the program is 0.95 (95%) sure then the object will be detected</p>
+<h6 id="_6"></h6>
+</details>
+<details class="info">
+<summary>SSD_config_file</summary>
+<h6 id="_7"></h6>
+<p>type: string<br />
+possible values: .pbtxt file path  </p>
+<p>Explanation:<br />
+configuration file for the SSD model  </p>
+<h6 id="_8"></h6>
+</details>
+<details class="info">
+<summary>SSD_model</summary>
+<h6 id="_9"></h6>
+<p>type: string<br />
+possible values: .pb file path  </p>
+<p>Explanation:<br />
+the trained SSD model  </p>
+<h6 id="_10"></h6>
+</details>
+<details class="info">
+<summary>SSD_labels</summary>
+<h6 id="_11"></h6>
+<p>type: string<br />
+possible values: .txt file path  </p>
+<p>Explanation:<br />
+the names of the objects (labels) for the SSD model  </p>
+<h6 id="_12"></h6>
+</details>
+<details class="info">
+<summary>YOLO_v3_accurate_config_file</summary>
+<h6 id="_13"></h6>
+<p>type: string<br />
+possible values: .cfg file path  </p>
+<p>Explanation:<br />
+configuration file for the YOLO accurate model  </p>
+<h6 id="_14"></h6>
+</details>
+<details class="info">
+<summary>YOLO_v3_accurate_model</summary>
+<h6 id="_15"></h6>
+<p>type: string<br />
+possible values: .weights file path  </p>
+<p>Explanation:<br />
+the trained YOLO Accurate model  </p>
+<h6 id="_16"></h6>
+</details>
+<details class="info">
+<summary>YOLO_v3_accurate_blob_size</summary>
+<h6 id="_17"></h6>
+<p>type: int<br />
+possible values: 0 or more (preferred 608)  </p>
+<p>Explanation:<br />
+not very sure what exactly this variable does. so I have attached a link that I hope could be useful. the link includes the paper for YOLO.  </p>
+<p>https://opencv-tutorial.readthedocs.io/en/latest/yolo/yolo.html  </p>
+<h6 id="_18"></h6>
+</details>
+<details class="info">
+<summary>YOLO_v3_not_accurate_config_file</summary>
+<h6 id="_19"></h6>
+<p>type: string<br />
+possible values: .cfg file path  </p>
+<p>Explanation:<br />
+configuration file for the YOLO not accurate model  </p>
+<h6 id="_20"></h6>
+</details>
+<details class="info">
+<summary>YOLO_v3_not_accurate_model</summary>
+<h6 id="_21"></h6>
+<p>type: string<br />
+possible values: .weights file path  </p>
+<p>Explanation:<br />
+the trained YOLO not accurate model  </p>
+<h6 id="_22"></h6>
+</details>
+<details class="info">
+<summary>YOLO_v3_not_accurate_blob_size</summary>
+<h6 id="_23"></h6>
+<p>type: int<br />
+possible values: more than 0 and less than 1 (preferred 608)  </p>
+<p>Explanation:<br />
+not very sure what exactly this variable does. so I have attached a link that I hope could be useful. the link includes the paper for YOLO.  </p>
+<p>https://opencv-tutorial.readthedocs.io/en/latest/yolo/yolo.html  </p>
+<h6 id="_24"></h6>
+</details>
+<details class="info">
+<summary>YOLO_v3_display_border_thickness</summary>
+<p>type: float<br />
+possible values: more than 0 and less than 1 (preferred 0.003)<br />
+default value: 0.003  </p>
+<p>Explanation:<br />
+the thickness of the rectangle (or border) that will be displayed on the frame on a detected object for the YOLO model. This number represents the proportion of the hight of the frame. for example if the frame hight is 1000 pixels and the YOLO_v3_display_border_thickness variable is 0.003 then the thickness will be 3 pixels. it is relative to the hight of the frame so that the display will not change if the resolution changes.</p>
+</details>
+<details class="info">
+<summary>YOLO_v3_display_text_size</summary>
+<p>type: float<br />
+possible values: more than 0 and less than 1 (preferred 0.0015)<br />
+default value: 0.0015  </p>
+<p>Explanation:<br />
+the size of the text that will display the object name. This number represents the proportion of the hight of the frame. for example if the frame hight is 1000 pixels and the YOLO_v3_display_text_size variable is 0.005 then the thickness will be 5 units. it is relative to the hight of the frame so that the display will not change if the resolution changes.</p>
+</details>
+<details class="info">
+<summary>YOLO_v3_display_text_thickness</summary>
+<p>type: float<br />
+possible values: more than 0 and less than 1 (preferred value 0.0025)<br />
+default value: 0.0025  </p>
+<p>Explanation:<br />
+the thickness of the text that will display the object name. this number represents the proportion of of the hight of the frame. for example if the frame hight is 1000 pixels and the YOLO_v3_display_text_thickness variable is 0.0025 then the thickness will be 2.5 units. it is relative to the hight of the frame so that the display will not change if the resolution changes.</p>
+</details>
+<details class="info">
+<summary>SSD_display_border_thickness</summary>
+<p>type: float<br />
+possible values: more than 0 and less than 1 (preferred 0.003)<br />
+default value: 0.003  </p>
+<p>Explanation:<br />
+the thickness of the rectangle (or border) for the SSD model that will be displayed on the frame on the detected object. this number represents the proportion of of the hight of the frame. for example if the frame hight is 1000 pixels and the YOLO_v3_display_border_thickness variable is 0.003 then the thickness will be 3 pixels. it is relative to the hight of the frame so that the display will not change if the resolution changes.</p>
+</details>
+<details class="info">
+<summary>location</summary>
+<p>type: string<br />
+possible values: any string<br />
+default value: KFUPM  </p>
+<p>Explanation:<br />
+This variable will be one of the results that will be recorded once a detection was found.  </p>
+<p>Use case:<br />
+one of the useful cases is when this software is used in a surveillance application. Say that you decided to use 1000 cameras in a certain area. multiple cameras or each one is connected to a computer that uses the software. you can make the location variable for each camera describes exactly the place it is in such as using the x and y GPS coordinate. Another example is if you have a drone you could update the location variable as the drone moves so that you could know the exact coordinate of each detection you had.</p>
+</details>
+<details class="info">
+<summary>font_TTF_file</summary>
+<p>type: string<br />
+possible values: .ttf file path<br />
+default value: resources/fonts/times.ttf (The Times New Roman Font)  </p>
+<p>Explanation:<br />
+the font that will be used in displaying most of the texts in the software.  </p>
+</details>
+<details class="info">
+<summary>display_text_sizes</summary>
+<p>type: python dictionary (or javascript object) with 5 variables each is a float<br />
+possible values: every variable in display_text_sizes could be from 0 to 100<br />
+default value: {"fps":5,"location":5,"SSD_objects":5,"date_and_time":5,"AI_model": 5}  </p>
+<p>Explanation:<br />
+the 5 variables will be displayed in the frame. their values represent their size percentage relative to the frame hight. so if the frame hight is 1000 pixels and for an example fps is 10 then it will be 10% of the hight of the frame which is 100 pixels height.</p>
+<p>Notes:<br />
+if you want to remove one of the 5 texts displayed in your frame then make the its variable equals to 0.</p>
+</details>
+<details class="info">
+<summary>display_text_colors</summary>
+<p>type: python dictionary (or javascript object) with 5 variables each has a list of three integers
+possible values: every variable in the font_sizes has a list that has three values each could be from 0 to 255
+default value: [255,0,0] for all (blue)  </p>
+<p>Explanation:<br />
+the values in the list inside the variables inside the font_sizes describes the color of the text. the color order is BGR (Blue, green, Red). For example if fps is [0,0,255] then it will be red or if it is [0,255,255] it will be yellow and so on.</p>
+</details>
+<details class="info">
+<summary>display_text_locations</summary>
+<p>type: python dictionary (or javascript object) with 5 variables each has a list of two floats<br />
+possible values: every variable in font_sizes has a list that has two values each could be from 0 to 1  </p>
+<p>Explanation:<br />
+the values in the list inside the variables inside the font_sizes describes the location of the texts.   </p>
+<p>the first value is the x axis and the second value is the y axis.<br />
+the coordinate starts from the upper left.<br />
+the x axis increases from left to right and the y axis increases from up to bottom.<br />
+the x and y axes is for the location of the upper left of the text.  </p>
+<p>for example if fps is [0.5, 0.5] then the upper left point of the text will be at the center.  </p>
+<p>Note:<br />
+if you make fps or any variable's x or y axis to 1 then it will disappear because this is the location of the upper left of the text.  </p>
+</details>
+<details class="info">
+<summary>display_objects_colors</summary>
+<p>type: list that has 5 values each value should be a string<br />
+possible values: every string in the list should have three integer values each from 0 to 255  </p>
+<p>Explanation:<br />
+This variable is only applicable for the two YOLO models. the values represent colors (B,G,R) or (Blue, Green, Red). for example (255,0,0) means that it is a blue color. these colors will display when an object is detected. display_objects_colors values are related to the YOLO labels. the file path is:
+resources/labels/YOLOv3_Labels.txt.</p>
+<p>the YOLOv3_Labels.txt file contains 80 labels (or objects names). the display_objects_colors variable will be mapped with the objects names in the YOLOv3_Labels.txt file so that  every object from the 80 objects will have one of the 5 colors. for example the first object in the YOLOv3_Labels.txt file is "person" so its color will be the first color in the five colors the third object which is car will have the third color of the five colors in the display_objects_colors. the sixth object which is "bus" will have the first color of the five colors the seventh will have the second color of the five and so on.</p>
+</details>
+<details class="info">
+<summary>occurrence_interval_frames</summary>
+<p>type: int<br />
+possible values: 1 or more  </p>
+<p>Explanation:<br />
+after a certain object is detected the program will save the image and wait a number of frames equal to the occurrence_interval_frames variable (the waiting includes the saved image) than saves again and so on. </p>
+<p>For an example if occurrence_interval_frames is 10 and a car was detected at the first frame than the program will count frame one until 10 then will start searching again at frame 11 for the car object to save it if it is available.</p>
+<p>Another example is if occurrence_interval_frames is 10 and a car was first detected at frame 15 and then 18,19,22 then 25 and a person was first detected at frame 16 then 17, 18, 19 and 100 then the frames that will be saved are 15, 16, 25 and 100.</p>
+<p>Use case:<br />
+this variable will be useful in case you want to save the frames which detected what you want but not every single one to reduce the size of your results. for example if there is a car which is not moving in the scene and the program was able to detect it in every single frame and the program is runs at 10 fps then this means that in only one hour there will be  10<em>60</em>60 = 6000 images saved which is a lot.</p>
+<p>Notes:<br />
+make sure that the save_results and save_images variables are true otherwise the images will not be saved.
+the occurrence_interval_frames is for every object not every detection as it has been explained  in the second example. </p>
+</details>
+<details class="info">
+<summary>save_results</summary>
+<p>type: boolean<br />
+possible values: true or false<br />
+default value: true  </p>
+<p>Explanation:<br />
+if there was a detection found then this variable will save the results in the Results folder.  </p>
+<p>Notes:<br />
+a .csv file will always be present if this value is true.<br />
+if this value is false then the save_images will not have effect even if it true.  </p>
+</details>
+<details class="info">
+<summary>save_images</summary>
+<p>type: boolean<br />
+possible values (depends on save_results): true or false<br />
+default value: true  </p>
+<p>Explanation:<br />
+if this variable is true then there will be images saved in the Results folder. make this variable false if you want to save space.  </p>
+<p>Notes:<br />
+if the save_results variable is false then the save_images variable will not save images even if it ia true  </p>
+</details>
+<details class="info">
+<summary>add_results_on_image</summary>
+<p>type: boolean<br />
+possible values: true or false<br />
+default value: true  </p>
+<p>Explanation:<br />
+if false the results images in the Results folder will not display some results such as frames per seconds and date and time, and location etc.</p>
+<p>Notes:<br />
+only the saved images will not show if this variable is false. the window that will display the</p>
+</details>
+<details class="info">
+<summary>YOLO_v3_objects_chosen</summary>
+<p>type: list with string values<br />
+possible values: any values in the object_detection/resources/labels/YOLOv3_Labels.txt file.</p>
+<p>Explanation:<br />
+if you choose one of the two YOLO models, then you can choose one of the objects out of the 80 in the YOLOv3_Labels.txt to be detected. if you choose nothing then nothing will be detected if you choose car and person then only these two will bwe detected</p>
+<p>Notes:<br />
+do not change the YOLOv3_Labels.txt file. if you do you will get wrong results<br />
+the names of the objects should exactly be the same as in the YOLOv3_Labels.txt file or you will get an error.  </p>
+</details>
+<details class="info">
+<summary>SSD_objects_chosen</summary>
+<p>type: list with string values<br />
+possible values: any values in the object_detection/resources/labels/SSD_Labels.txt.txt file.  </p>
+<p>Explanation:<br />
+if you choose the SSD model, then you can choose one of the objects in the SSD_Labels.txt to be detected. if you choose nothing then nothing will be detected if you choose car and person then only these two will bwe detected</p>
+<p>Notes:<br />
+do not change the SSD_Labels.txt file. if you do you will get wrong results.<br />
+this file used to have a lot of switched objects labels but a lot were fixed. if you choose a unpopular object then you might get another object name.</p>
+</details>
+<details class="info">
+<summary>add_to_previous_results</summary>
+<p>type: boolean<br />
+possible values: true or false<br />
+default value: false  </p>
+<p>Explanation:<br />
+if this value is true and you close and open the program multiple times then the .csv file in the Results folder will not change (the results will be accumulated)</p>
+</details>
+<details class="info">
+<summary>add_header_to_next_results</summary>
+<p>type: boolean<br />
+possible values (depends on add_to_previous_results): true or false.<br />
+default value: true  </p>
+<p>Explanation:<br />
+this variable will add a header in the .csv file in the Results folder to the accumulated results (if add_to_previous_results is true and you have open the program more than two times).</p>
+</details>
+<details class="info">
+<summary>image_extension</summary>
+<p>type: string<br />
+possible values: jpg or png<br />
+default value: jpg   </p>
+<p>Explanation:<br />
+the formate of the image that will be saved. use .jpg if you want less size.  </p>
+</details>
+</details>
+<details class="info">
+<summary>results</summary>
+<details class="info">
+<summary>results["objects"]</summary>
+<p>type: python dictionary  </p>
+<p>Example: {'person': [4, 0.713], 'car': [1, 0.82]}  </p>
+<p>Example Explanation:  </p>
+<p>The keys of the dictionary are the object detected for the frame in the detect function. the value of any key is a list that consist of two numbers. the first number is the number of  objects that were detected in that frame. the second numbers is the maximum confidence of the objects. in the example there are 4 people that were detected in the frame and out of the 4 the highest confidence is 71.3%. the second object is only one car so obviously that car confidence is 82% (the software is 82% sure that it is a car)</p>
+</details>
+<details class="info">
+<summary>results["location"]</summary>
+<p>type: string  </p>
+<p>Example: KFUPM  </p>
+<p>Example Explanation:  </p>
+<p>This is simply one of the inputs that is also used as an output for getting more information about the results.  </p>
+</details>
+<details class="info">
+<summary>results["date_and_time"]</summary>
+<p>type: string  </p>
+<p>Example: 2022/08/03, Wed, 04:46:40 PM  </p>
+<p>Example Explanation:  </p>
+<p>the date and time there were detection on the frame.  </p>
+<p>year/month/day, day name, hour:minute:seconds AM or PM  </p>
+</details>
+<details class="info">
+<summary>results["frame_number"]</summary>
+<p>type: int  </p>
+<p>Example: 5937  </p>
+<p>Example Explanation:  </p>
+<p>the frame number since the beginning of the program.  </p>
+</details>
+<details class="info">
+<summary>results["fps"]</summary>
+<p>type: float  </p>
+<p>Example: 5.58  </p>
+<p>Example Explanation:  </p>
+<p>the frames per second at the time of detection.  </p>
+</details>
+<details class="info">
+<summary>results["AI_model"]</summary>
+<p>type: string  </p>
+<p>Example: SSD  </p>
+<p>Example Explanation:  </p>
+<p>This is simply one of the inputs that is also used as an output for getting more information about the results.  </p>
+</details>
+<details class="info">
+<summary>results["objects_summary"]</summary>
+<p>type: string  </p>
+<p>Example: {'person': [14, 15, 0.613], 'cat': [6, 11, 0.83], 'car': [4, 21, 0.942]}  </p>
+<p>Example Explanation:  </p>
+<p>this result gives the details of the detected objects since the beginning of the program (unlike results["objects"] which only describes the detected objects in the single frame)  </p>
+<p>the keys of the dictionary are for the detected objects since the beginning of the program. every key has a list of three values.  </p>
+<p>the first value is how mush a particular object has occurred since the beginning of the program. this value depends on the occurrence_interval_frames input variable in the .json file. for example if the occurrence_interval_frames is 10 and if the program detects a person on frame number 1 until 10 then the object will still be considered that it has only occurred once. if a person was detected in th 11th or any frame after then this will be considers as the second occurrence. the third occurrence will be 10 frames after the second occurrence and the fourth will be 10 frames after the third and so on. another example is if a car was detected at frame 1,2,6,8,15,100,200,201,204 and 2492, then it will be considered that it has occurred 5 times if occurrence_interval_frames is 10.</p>
+<p>the second value is the maximum number of objects that were detected from the beginning of the program (this is similar to the first value in the list in results["objects"] but instead of one frame it will consider all of the frames and then get the maximum number).</p>
+<p>the third value is the maximum confidence of the objects since the beginning of the program (this is similar to the second value in the list in results["objects"] but instead of one frame it will consider all of the frames and then get the maximum number).</p>
+<p>for the example lets consider the car object. one possible scenario for the first value is if the car was detected at frame number 1,2,3,4 11, 55, and 100. the second value means that out of the seven frames there was a frame were 21 cars were detected and this is the maximum number of the seven frames. the last value means that for all of the detected cars in the whole program the is a car were the program is 94.2% sure that it is a car and this is the maximum number.</p>
+</details>
+</details>
+<details class="info">
+<summary>results_frames</summary>
+<p>type: numpy object.   </p>
+<p>possible values: three or sometimes two dimensional array (hight, width, and sometimes color channels with three values which are usually (b,g,r)). for the three or one channel (two dimensional array) the values are usually from 0 to 255 (uint8 type in the numpy library)  </p>
+<p>Notes:<br />
+  1-the "type" and "possible values" are true for all of the BV software, but to be more specific for this specific project (object_detection) it is three dimensional array with three (b,g,r) channels.<br />
+  2-the names of the frames (or one frame) should be self explanatory so we will not go deep in explaining them. Some one with basic knowledge with the numpy library should be able to deal with them without issues.</p>
+<p>frames:<br />
+  results_frames["original_with_results"] </p>
+</details>
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page -->
+  
+    
+      
+    
+    <nav
+      class="md-footer__inner md-grid"
+      aria-label=""
+      
+    >
+
+      <!-- Link to previous page -->
+      
+        
+        <a
+          href="../pipe_angle/"
+          class="md-footer__link md-footer__link--prev"
+          aria-label="Previous: Pipe Angle Detection"
+          rel="prev"
+        >
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Pipe Angle Detection
+            </div>
+          </div>
+        </a>
+      
+
+      <!-- Link to next page -->
+      
+        
+        <a
+          href="../../troubleshooting/"
+          class="md-footer__link md-footer__link--next"
+          aria-label="Next: Troubleshooting"
+          rel="next"
+        >
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Troubleshooting
+            </div>
+          </div>
+
+
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+
+
+
+  <!-- Further information -->
+
+<!-- 
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+ -->
+      
+      <!-- Social links -->
+
+<!-- 
+      
+    </div>
+  </div>
+ -->
+
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.407015b8.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Particle Helix - Multiple</title>
+
+
+<style>
+
+  body {
+
+    overflow: hidden;
+    margin: 0;
+
+
+  }
+
+
+.container {
+
+  overflow: hidden;
+
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+
+
+
+
+
+
+
+
+    position: absolute;
+    top:0;
+
+    
+
+
+    display: flex;
+    justify-content: space-around;
+
+    align-content: center;
+    align-items: center;
+
+
+
+    margin:0px;
+    padding: 0px;
+
+    width: 100%;
+    height: 100vh;
+
+    z-index: 4;
+}
+
+.item {
+
+    width: clamp(45%, 400px, 33%);
+
+    height: clamp(40%, 45%, 55%);
+
+}
+
+.num1{
+  height: attr;
+}
+
+
+    
+
+@media all and (max-width: 250mm) {
+    .container {
+        flex-direction: column;
+    }
+
+    .item{
+        width: clamp(85%, 400px, 33%);
+    }
+
+    .num1{
+  height: 30%;
+}
+
+}
+
+
+
+
+</style>
+
+</head>
+<body>
+
+
+
+
+<div class="container">
+
+  <video class="item" src="resources/examples/object_detection/1.mp4" controls></video>
+  <video class="item" src="resources/user_guides/control_window_8.mp4" controls></video>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,1262 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A software for computer vision that anyone could use.">
+      
+      
+        <meta name="author" content="Ibrahim Aljalal">
+      
+      
+        <link rel="canonical" href="https://ibrahimaljalal.github.io/BV/user_guides/">
+      
+      
+        <link rel="prev" href="../downloads/">
+      
+      
+        <link rel="next" href="../examples/">
+      
+      <link rel="icon" href="../resources/media/bv.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.5">
+    
+    
+      
+        <title>User Guides - Brilliant Vision</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7a7fce14.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#control-window-features" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Brilliant Vision" class="md-header__button md-logo" aria-label="Brilliant Vision" data-md-component="logo">
+      
+  <img src="../resources/media/bv.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Brilliant Vision
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              User Guides
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../about/" class="md-tabs__link">
+      About
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../downloads/" class="md-tabs__link">
+      Downloads
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      User Guides
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../examples/" class="md-tabs__link">
+        Examples
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../results/" class="md-tabs__link">
+        Results
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../documentation/" class="md-tabs__link">
+        Documentation
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../troubleshooting/" class="md-tabs__link">
+      Troubleshooting
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../best_practices/" class="md-tabs__link">
+      Best Practices
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../FAQs/" class="md-tabs__link">
+      FAQs
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../feedback/" class="md-tabs__link">
+      Feedback
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../others/" class="md-tabs__link">
+      Others
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Brilliant Vision" class="md-nav__button md-logo" aria-label="Brilliant Vision" data-md-component="logo">
+      
+  <img src="../resources/media/bv.png" alt="logo">
+
+    </a>
+    Brilliant Vision
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../downloads/" class="md-nav__link">
+        Downloads
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          User Guides
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        User Guides
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1question-mark" class="md-nav__link">
+    1.Question Mark
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2common-settings" class="md-nav__link">
+    2.Common Settings
+  </a>
+  
+    <nav class="md-nav" aria-label="2.Common Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#part-1" class="md-nav__link">
+    Part 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-2" class="md-nav__link">
+    Part 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-3" class="md-nav__link">
+    Part 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-stream-to-the-software" class="md-nav__link">
+    1. Stream to the Software
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-connect-to-the-control-window" class="md-nav__link">
+    2. Connect to the Control Window
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        Examples Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/color_detection/" class="md-nav__link">
+        Color Detection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/pipe_angle/" class="md-nav__link">
+        Pipe Angle Detection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/object_detection/" class="md-nav__link">
+        Object Detection
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Results
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Results
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../results/" class="md-nav__link">
+        Results Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../results/color_detection/" class="md-nav__link">
+        Color Detection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../results/pipe_angle/" class="md-nav__link">
+        Pipe Angle Detection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../results/object_detection/" class="md-nav__link">
+        Object Detection
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation/" class="md-nav__link">
+        Documentation Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation/color_detection/" class="md-nav__link">
+        Color Detection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation/pipe_angle/" class="md-nav__link">
+        Pipe Angle Detection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation/object_detection/" class="md-nav__link">
+        Object Detection
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../best_practices/" class="md-nav__link">
+        Best Practices
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FAQs/" class="md-nav__link">
+        FAQs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feedback/" class="md-nav__link">
+        Feedback
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../others/" class="md-nav__link">
+        Others
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1question-mark" class="md-nav__link">
+    1.Question Mark
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2common-settings" class="md-nav__link">
+    2.Common Settings
+  </a>
+  
+    <nav class="md-nav" aria-label="2.Common Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#part-1" class="md-nav__link">
+    Part 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-2" class="md-nav__link">
+    Part 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#part-3" class="md-nav__link">
+    Part 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-stream-to-the-software" class="md-nav__link">
+    1. Stream to the Software
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-connect-to-the-control-window" class="md-nav__link">
+    2. Connect to the Control Window
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<details class="abstract">
+<summary>prerequisites</summary>
+<ol>
+<li><a href="../about" target="_blank">About</a> page.   </li>
+<li>In the <a href="#generate_code">Generate Code</a> section you should have some experience with:<br />
+a. Python programing language.<br />
+b. OpenCV library for python.<br />
+c. JSON file formate.<br />
+d. Some experience with linux operating system &amp; the Raspberry Pi microprocessor. (This part is optional).  </li>
+</ol>
+</details>
+<details class="nots">
+<summary>notes</summary>
+<p><div align="justify" style="align:justify;  font-family: 'Arial', sans-serif;">
+1. Most of the illustrations will have their explanation immediately after them (Some might be self-explanatory, but we have added explanations just in case).<br />
+2. Some of the demonstrational examples used in this User Guides are available in a folder called resources. This is the <a href="https://mega.nz/folder/U8pSTQIY#FceA4yc-Pd9tOFB02N_9Pg" target="_blank">link</a> of the folder (the link might not be available in the future). The purpose of this folder is to enable you to test some of the features of the software yourself.<br />
+3. In general there is no prerequisites for the "User Guides" since one of the main goals of this software is to make it usable by almost anyone (the "Generate Code" section is the main exception).
+</div></p>
+</details>
+<hr />
+<details class="info">
+<summary>General Guide</summary>
+<p><img alt="general_guide" src="../resources/user_guides/general_guide.png" /></p>
+<p><div align="justify" style="align:justify;  font-family: 'Arial', sans-serif;">
+1-The license window will by default contain the free license.  </p>
+<p>2-After accessing the software you will be presented with three projects each one with its brief description (There might be much more in the future!). In this window (and in the license window) if you have noticed some issues in the software, you could click on "Report an Issue" button and explain exactly what is your issue or give your feedback on github.com. Or click on "Website" to get more information related to the documentation, FAQs, troubleshot, best practices, etc.  </p>
+<p>3-The "Setup Window" will be the <span style="font-weight: bold;">same for all projects</span>. The most important parameter is the "Input Type" and its corresponding input. The input types are <span style="font-weight: bold;">Camera, Image, Video, and IP Address</span> (Image and Video are usually used for testing purposes).  </p>
+<p>4-After clicking the "Start" button in the "Setup Window", a window named "Control Window" will open with another window (or in some projects multiple windows) showing the results.</p>
+<p>4.1-The Control Window will have all the parameters or settings related to the project which has been selected. <span style="font-weight: bold;">Note that some parameters or settings are common for all projects</span>.  </p>
+<p>4.2-The Display Window (or multiple windows) will display the results (note that its title will depend on the context of the display). If there are multiple windows, they will be numbered chronologically according to the operation the frame goes through so that the user would have more understanding on what is going on.
+</div></p>
+</details>
+<details class="info">
+<summary>Control Window</summary>
+<p><img alt="control_window_1" src="../resources/user_guides/control_window_1.png" /></p>
+<p><div align="justify" style="align:justify;  font-family: 'Arial', sans-serif;">
+As it has been explained in the "General Guide" section, the control window will open with another window (or multiple windows depending on the project). The Control window will have all the main parameters related to the project you have selected. In the previous slide we have selected the "Object Detection" project. The "Input Type" was "Image", and the image is in the "resources" folder (should come with the software when you download it so that you could test for yourself). If you want even more control such as changing the font on the display window you can do that in the .json file after generating the code (to know more about that go to the "Generate Code" section which is mainly for developers).
+</div></p>
+<p><div style="line-height:10px;">
+<br>
+</div></p>
+<h1 id="control-window-features">Control Window Features:</h1>
+<h2 id="1question-mark">1.Question Mark</h2>
+<p><img alt="control_window_2" src="../resources/user_guides/control_window_2.png" />
+<br/>
+<img alt="control_window_3" src="../resources/user_guides/control_window_3.gif" />
+<img alt="control_window_4" src="../resources/user_guides/control_window_4.png" /></p>
+<p><div align="justify" style="align:justify;  font-family: 'Arial', sans-serif;">
+Some parts in the control window which may not be very clear, needs more context, or additional information will have the "?" mark near it to give further explanation. The Explanation is usually an image or text (we might add video in the future if necessary).
+</div></p>
+<h2 id="2common-settings">2.Common Settings</h2>
+<p><img alt="control_window_5" src="../resources/user_guides/control_window_5.png" /></p>
+<h3 id="part-1">Part 1</h3>
+<p><video width="100%" controls style="position: relative;left: 0%">
+  <source src="../resources/user_guides/control_window_6.mp4" type="video/mp4"></p>
+<p></video>
+<div align="justify" style="align:justify;  font-family: 'Arial', sans-serif;">
+The first part in the "Common Settings" section is perhaps the most important part of the three parts because it <span style="font-weight: bold;">might substantially improve your time and help you organize your </span> work. When you have tweaked the settings in the control window to your needs and want to use the same settings later, then simply write any name you like in the "New Settings Name" field (it is recommended to clearly describe your settings name just like the in the demonstration) and then click "Save Settings". After that, the name you have entered will be available in the above dropdown menu.
+</div></p>
+<p><div align="justify" style="align:justify;  font-family: 'Arial', sans-serif;">
+When "Show Frames" is off, the display will freeze but when you generate the code (go to "Generate Code" section to learn more) and run the code, then the display will not open at all. This will be helpful if you are plaining to use the code in the Raspberry Pi microprocessor in your robot project or any type of project since <span style="font-weight: bold;">displaying the frames will waste more computer recourses</span>.
+</div></p>
+<h3 id="part-2">Part 2</h3>
+<p><div align="justify" style="align:justify;  font-family: 'Arial', sans-serif;">
+Part 2 is simply the location of the footage. This might be useful if for example you have installed hundreds of cameras for a surveillance application, and they are all sending the results to a free google drive account, then definitely you would like to know where each result was taken. Another example is if you have a drone, and you want to know the exact location a certain object was detected by providing the x, y, and maybe z coordinates. In this case you need to dynamically change this variable and to do so you need to generate the code and program it to your needs.
+</div></p>
+<h3 id="part-3">Part 3</h3>
+<p><img alt="control_window_7" src="../resources/user_guides/control_window_7.png" /></p>
+<p><div align="justify" style="align:justify;  font-family: 'Arial', sans-serif;">
+After choosing the place you want to save your results in the setup window in point 1 and checking on the "Save Results" in point 2, then all the results <span style="font-weight: bold;">in detail</span> will be saved in a csv file (point 3) which will have the same name as the project name. The next demonstration shows how the csv file works.</p>
+<p>Note: you will not be able to see the results live if you open the file with Excel. So, one way to see the results live is to use the "visual studio code" editor software (you can easily download it since it is free and open source) and optionally install the "Rainbow CSV" extension to have similar results as in the demonstration.
+</div></p>
+<p><video width="100%" controls style="position: relative;left: 0%">
+  <source src="../resources/user_guides/control_window_8.mp4" type="video/mp4"></p>
+</video>
+<p>All the details of a detection will be saved in a .csv file.</p>
+<p><br/></p>
+<p><img alt="control_window_9" src="../resources/user_guides/control_window_9.png" /></p>
+<p><div align="justify" style="align:justify;  font-family: 'Arial', sans-serif;">
+The csv file <span style="font-weight: bold;">could be extremely important</span> in case for an example you do not have hundreds but thousands of cameras and all of them are sending the detected results to one free google drive account. If you want to send the results as images this might be nearly impossible even with a fast internet since media files take a lot of bandwidth. This is not the case when you only want to send the description of the image which was detected (it will have much lower size then the image itself). One interesting way to utilize the results in the csv file is to take the location coordinates of a detected object and display it on a map just like the image above. <span style="font-weight: bold;">Note that the image is not an example from the software but a possible addition that could be easily added by the developer who generated the code</span>.
+</div></p>
+<p><img alt="control_window_10" src="../resources/user_guides/control_window_10.png" /></p>
+<p><div align="justify" style="align:justify;  font-family: 'Arial', sans-serif;">
+The "Frames Skipped" will be useful if you do not want to have a lot of images saved in you drive. If for an example you make it 100, then from the first time it detects something it will save it as an image and waits 100 frames after that the program will save again if there is something detected and waits 100 frames and so on.</p>
+<p>Notes:<br />
+1. The count includes the detected image so if something is detected at frame 1 and it will continue to be there then the next save will be in frame 100 not 101.<br />
+2. For the object detection project every object has its own separate dimension. Meaning that the first time a cat is detected is not like the first time a dog is detected. For an example if a dog, and a cat were detected at frame 1 and they remained being detected and an apple was detected at frame 2 and remained, and a remote was detected at frame 4 and remained and the "Frames Skipped"  was set to 100 then the images which are being saved are 1, 2, 4, 101, 102, 104, 201, 202, 204 and so on. That make sense and should be more  convenient for the user because if all objects where treated the same then some objects may get detected but never be saved as an image.<br />
+3. The "Frames Skipped"  will not be applied to the csv file since it does not waste a lot of storage.</p>
+<p>The "Save Images" is self explanatory. If it is off, then the images will not be saved in the "images" folder.
+</div></p>
+<p><img alt="control_window_11" src="../resources/user_guides/control_window_11.gif" /></p>
+</details>
+<details class="info">
+<summary>Generate Code</summary>
+<p><div id="generate_code">
+<div align="justify" style="align:justify;  font-family: 'Arial', sans-serif;">
+Please note that <span style="font-weight: bold;">this section is meant for developers </span> who have some experience with the Python programing language. If you are not a developer, then you could still go through the steps and configure the .json file since you do not need to be a programmer to understand how to read or write on a .json file (few YouTube tutorial should give you the general idea), but the main purpose of this section is to enable programmers to add this code as part of their project and make them configure it the way they like.</p>
+<p><img alt="generate_code_1" src="../resources/user_guides/generate_code_1.png" /></p>
+<p>1-Select the path you want the project to be generated to.  </p>
+<p>2-The currant settings is named "default". You can change it from the menu or make your own setting. You do not need to check off the "Show Frames" but if it is turned on and your plaining to make this code run In the Raspberry Pi immediately after it is powered on (the instructions for that are in the read.md file), then the code will not work. The "Generate Code" button will make a folder with the setting selected in our case it is "default".  </p>
+<p>3-After clicking "Generate Code" in part 2 a folder will be made in the selected path from part 1.  </p>
+<p>4-After entering the generated folder (in our case it is named "object_detection" from part 3) we will see 5 folders and files. Here are the files and folders we should be concern of:<br />
+a-readme.md, b-main.py, c-settings_file_name.txt, d-settings folder, e-Results folder. 
+<span style="font-weight: bold;">The rest we should not worry about </span>. Even from a to e the only ones we could manually make changes to are b-main.py, c-settings_file_name.txt, and d-settings folder (the .json files) the reaming two are for reading only. Note that the illustration we have used is for the object detection project, but these steps should work the same for the remaining projects and possible future projects.</p>
+<p>Here are the main files/folders we should consider in any generated code from the BV software:<br />
+a. readme.md: this file will have all the instructions for running the code<br />
+b. main.py: the starting point of the program. after going through the readme.md file you could run the code and it should work. For the rest of the files/folders (4.c, 4.d, and 4.e) you do not need to even open them for the program to work but sometimes it is useful to make some changes which suits your needs.<br />
+c. settings_file_name.txt: This is the file which is opened in the right window in part 4. In it you put the name of the setting you want to use. In our case because we generated the code, and the settings was on "default" in part 2 then "default" is what is in this file. if the setting name in part 2 is test then the value test will be in this file.<br />
+<span style="font-weight: bold;">d. settings folder:</span> All the setting files (.json files) are in this folder and one of them is "default". Note that all the files (.json files) should have the same structure. The possible values and meaning of each variable is in the documentation section of the website: https://ibrahimaljalal.github.io/BV/documentation (the domain might change in the future). An example of how to use the .json file is in the next illustration. Note that in OpenCV unlike most software the color channels are (b,g,r) instead of (r,g,b).<br />
+e. Results folder: This folder will simply save any detection in your project.  </p>
+<p>5-In case you want to use this code on a Raspberry Pi make sure you use version 4 with 64-bit architecture and the operating system is "Raspberry Pi OS" (64-bit). <span style="font-weight: bold;">Make sure to install the 64-bit OS not the 32-bit OS </span> (before 2022 64-bit was not available and 32-bit might still be the default)</p>
+<p><video width="100%" controls style="position: relative;left: 0%">
+  <source src="../resources/user_guides/generate_code_2.mp4" type="video/mp4"></p>
+</video>
+<p>A brief demonstration on how to use of the .json file</p>
+</div>
+</details>
+<details class="info">
+<summary>Connect Other Devices</summary>
+<div align="justify" style="align:justify;  font-family: 'Arial', sans-serif;">
+<h2 id="1-stream-to-the-software">1. Stream to the Software</h2>
+<p><img alt="connect_1" src="../resources/user_guides/connect_1.png" /></p>
+<p><img alt="connect_2" src="../resources/user_guides/connect_2.png" /></p>
+<p><img alt="connect_3" src="../resources/user_guides/connect_3.jpg" /></p>
+<p><img alt="connect_4" src="../resources/user_guides/connect_4.jpg" /></p>
+<p>If you have an Android Device, then use the "IP Webcam" app to stream to the software. The instructions will be available in detail (not shown in the image) once you select the "IP Address" as an "Input Type" in the "Setup Window". Make sure you are at the same local area network (LAN). The type of communication is TCP which means we should not worry about corruption in the footage. The speed of the TCP in the LAN network is fast so there is currently no need for UDP in this software.</p>
+<h2 id="2-connect-to-the-control-window">2. Connect to the Control Window</h2>
+<p><img alt="connect_5" src="../resources/user_guides/connect_5.png" /></p>
+<p><img alt="connect_6" src="../resources/user_guides/connect_6.png" /></p>
+<p><video width="100%" controls style="position: relative;left: 0%">
+  <source src="../resources/user_guides/connect_7.mkv" type="video/mp4"></p>
+</video>
+<p>If you are at the same local area network (LAN) then you can allow other devices from the network to access the "Control Window" of the software. <span style="font-weight: bold;">Note that you could connect as many devices as you like but it is recommended to use one. </span></p>
+</div>
+</details>
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page -->
+  
+    
+      
+    
+    <nav
+      class="md-footer__inner md-grid"
+      aria-label=""
+      
+    >
+
+      <!-- Link to previous page -->
+      
+        
+        <a
+          href="../downloads/"
+          class="md-footer__link md-footer__link--prev"
+          aria-label="Previous: Downloads"
+          rel="prev"
+        >
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Downloads
+            </div>
+          </div>
+        </a>
+      
+
+      <!-- Link to next page -->
+      
+        
+        <a
+          href="../examples/"
+          class="md-footer__link md-footer__link--next"
+          aria-label="Next: Examples Introduction"
+          rel="next"
+        >
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Examples Introduction
+            </div>
+          </div>
+
+
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+
+
+
+  <!-- Further information -->
+
+<!-- 
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+ -->
+      
+      <!-- Social links -->
+
+<!-- 
+      
+    </div>
+  </div>
+ -->
+
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.407015b8.min.js"></script>
+      
+    
+  </body>
+</html>
